@@ -13,6 +13,10 @@ variable "maximum_concurrency" {
 }
 
 variable "s3_bucket_name" {}
-data "aws_s3_bucket" "selected" {
-  bucket = var.s3_bucket_name
+
+variable "alb_hosts" {
+  default = []
 }
+variable "alb_listener_arn" {}
+variable "alb_priority" {}
+variable "vpc_id" {}

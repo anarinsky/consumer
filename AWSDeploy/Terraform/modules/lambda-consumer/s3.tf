@@ -7,6 +7,8 @@ module "mod_s3_label" {
 }
 
 resource "aws_s3_bucket" "mod" {
+  count = local.store_on_s3 ? 1 : 0
+
   bucket        = module.mod_s3_label.id
   force_destroy = true
 
@@ -14,14 +16,18 @@ resource "aws_s3_bucket" "mod" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "mod" {
-  bucket = aws_s3_bucket.mod.id
+  count = local.store_on_s3 ? 1 : 0
+
+  bucket = aws_s3_bucket.mod[0].id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "mod" {
-  bucket = aws_s3_bucket.mod.id
+  count = local.store_on_s3 ? 1 : 0
+
+  bucket = aws_s3_bucket.mod[0].id
 
   block_public_acls       = true
   block_public_policy     = true
