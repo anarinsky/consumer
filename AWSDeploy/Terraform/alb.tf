@@ -8,12 +8,16 @@ module "alb" {
   subnet_ids                        = module.subnets.public_subnet_ids
   cross_zone_load_balancing_enabled = true
 
-  deletion_protection_enabled = true
+  access_logs_enabled         = false
+  deletion_protection_enabled = false
 
-  http2_enabled    = true
-  http_redirect    = true
-  https_enabled    = true
-  certificate_arn  = data.aws_acm_certificate.default.arn
-  https_ssl_policy = "ELBSecurityPolicy-TLS13-1-3-2021-06"
-  # additional_certs = []
+  https_enabled = false
+  http2_enabled = false
+  http_redirect = false
+  # certificate_arn  = data.aws_acm_certificate.default.arn
+  # https_ssl_policy = "ELBSecurityPolicy-TLS13-1-3-2021-06"
+
+  depends_on = [
+    module.vpc
+  ]
 }

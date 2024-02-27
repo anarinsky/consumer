@@ -6,6 +6,6 @@ module "this" {
   environment = var.environment
   tags = {
     Terraform = "true"
-    owner = "AlexN"
+    owner     = "AlexN"
   }
 }
