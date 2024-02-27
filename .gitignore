@@ -1,7 +1,8 @@
 ## Files
 *.log
-*.pot
+#*.pot
 *.pyc
+*.scr
 
 ## Dirs
 env/
@@ -10,6 +11,60 @@ staticfiles/
 
 ## pynacl keys' dev location!
 keys.json
+
+# Python
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+*.egg-info/
+dist/
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg
+*.manifest
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+terraform.tfvars
+*.tfvars.secret
+
+# AWS
+.aws/
+*.pem
+*.pub
+*keypair
+credentials
+config
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
 
 
 
