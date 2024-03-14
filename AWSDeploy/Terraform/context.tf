@@ -7,5 +7,6 @@ module "this" {
   tags = {
     Terraform = "true"
     owner     = "AlexN"
+    Project = "ConsumerReportInterface"
   }
 }
