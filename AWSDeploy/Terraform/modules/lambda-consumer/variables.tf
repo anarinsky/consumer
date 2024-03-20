@@ -19,4 +19,4 @@ variable "maximum_concurrency" {
 #}
 #variable "alb_listener_arn" {}
 #variable "alb_priority" {}
-variable "vpc_id" {}
+#variable "vpc_id" {}

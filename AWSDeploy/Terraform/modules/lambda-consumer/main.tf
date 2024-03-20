@@ -28,12 +28,12 @@ module "mod" {
     pip_requirements = true
   }]
 
-  allowed_triggers = {
-    elasticloadbalancing = {
-      principal  = "elasticloadbalancing.amazonaws.com"
-      source_arn = module.ingress.target_group_arn
-    }
-  }
+#  allowed_triggers = {
+#    elasticloadbalancing = {
+#      principal  = "elasticloadbalancing.amazonaws.com"
+#      source_arn = module.ingress.target_group_arn
+#    }
+#  }
   store_on_s3 = local.store_on_s3
 #  s3_bucket   = local.store_on_s3 ? aws_s3_bucket.mod[0].bucket : null
 
@@ -46,8 +46,8 @@ module "mod" {
   create_unqualified_alias_allowed_triggers = true
   create_current_version_allowed_triggers   = false
 
-  attach_policy_json = true
-  policy_json        = data.aws_iam_policy_document.policy.json
+  attach_policy_json = false
+  #policy_json        = data.aws_iam_policy_document.policy.json
 
   tags = module.this.tags
 
@@ -56,25 +56,25 @@ module "mod" {
 #  ]
 }
 
-data "aws_iam_policy_document" "policy" {
-  statement {
-    effect = "Allow"
-    actions = [
-      "s3:*",
-    ]
-    resources = ["*"]
-#    resources = [
-#      format("%s/*", data.aws_s3_bucket.selected.arn),
+#data "aws_iam_policy_document" "policy" {
+#  statement {
+#    effect = "Allow"
+#    actions = [
+#      "s3:*",
 #    ]
-  }
-}
+#    resources = ["*"]
+##    resources = [
+##      format("%s/*", data.aws_s3_bucket.selected.arn),
+##    ]
+#  }
+#}
 
-resource "aws_lb_target_group_attachment" "mod" {
-  target_group_arn = module.ingress.target_group_arn
-  target_id        = module.mod.lambda_function_arn
-
-  depends_on = [
-    module.mod,
-    module.ingress,
-  ]
-}
+#resource "aws_lb_target_group_attachment" "mod" {
+#  target_group_arn = module.ingress.target_group_arn
+#  target_id        = module.mod.lambda_function_arn
+#
+#  depends_on = [
+#    module.mod,
+#    module.ingress,
+#  ]
+#}
