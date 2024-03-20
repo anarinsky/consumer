@@ -3,11 +3,11 @@ module "ingress" {
 
   context = module.this.context
 
-  unauthenticated_priority      = var.alb_priority
+#  unauthenticated_priority      = var.alb_priority
   health_check_enabled          = false
   target_type                   = "lambda"
   vpc_id                        = var.vpc_id
-  unauthenticated_hosts         = var.alb_hosts
-  unauthenticated_listener_arns = [var.alb_listener_arn]
+#  unauthenticated_hosts         = var.alb_hosts
+#  unauthenticated_listener_arns = [var.alb_listener_arn]
   unauthenticated_paths         = ["/*"]
 }

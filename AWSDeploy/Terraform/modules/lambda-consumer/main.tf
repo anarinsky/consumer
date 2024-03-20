@@ -15,9 +15,9 @@ module "mod" {
   build_in_docker  = true
   docker_pip_cache = true
 
-  environment_variables = {
-    S3_BUCKET_NAME = data.aws_s3_bucket.selected.bucket
-  }
+#  environment_variables = {
+#    S3_BUCKET_NAME = data.aws_s3_bucket.selected.bucket
+#  }
 
   docker_additional_options = [
     "--platform", "linux/amd64",
@@ -35,7 +35,7 @@ module "mod" {
     }
   }
   store_on_s3 = local.store_on_s3
-  s3_bucket   = local.store_on_s3 ? aws_s3_bucket.mod[0].bucket : null
+#  s3_bucket   = local.store_on_s3 ? aws_s3_bucket.mod[0].bucket : null
 
   #vpc_subnet_ids         = var.vpc_subnet_ids
   #vpc_security_group_ids = [
@@ -51,9 +51,9 @@ module "mod" {
 
   tags = module.this.tags
 
-  depends_on = [
-    aws_s3_bucket.mod,
-  ]
+#  depends_on = [
+#    aws_s3_bucket.mod,
+#  ]
 }
 
 data "aws_iam_policy_document" "policy" {
@@ -62,9 +62,10 @@ data "aws_iam_policy_document" "policy" {
     actions = [
       "s3:*",
     ]
-    resources = [
-      format("%s/*", data.aws_s3_bucket.selected.arn),
-    ]
+    resources = ["*"]
+#    resources = [
+#      format("%s/*", data.aws_s3_bucket.selected.arn),
+#    ]
   }
 }
 

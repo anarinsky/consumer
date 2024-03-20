@@ -1,4 +1,6 @@
 from datetime import datetime
+
+import awsgi
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
@@ -47,3 +49,6 @@ def process_request():
 
 # To run the Flask app, use the following command in the terminal:
 # flask run
+
+def lambda_handler(event, context):
+    return awsgi.response(app, event, context, base64_content_types={"image/png"})
