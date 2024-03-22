@@ -3,6 +3,7 @@ curl -X POST http://127.0.0.1:5000/v1/data-rights-request/ \
 -d '{
   "agent-id": "aa-id",
   "business-id": "cb-id",
+  "request_id": "592959"
   "expires-at": "<ISO 8601 Timestamp>",
   "issued-at": "<ISO 8601 Timestamp>",
   "drp.version": "0.9.1",
