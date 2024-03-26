@@ -1,5 +1,7 @@
 Flask==2.1.2
-# https://stackoverflow.com/questions/77213053/why-did-flask-start-failing-with-importerror-cannot-import-name-url-quote-fr
 Werkzeug==2.2.2
 python-dotenv
 aws-wsgi
+pynacl
+arrow
+
